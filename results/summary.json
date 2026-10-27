@@ -1,0 +1,99 @@
+{
+  "dataset": {
+    "name": "Fashion-MNIST",
+    "classes": 10,
+    "image": "28x28 灰度",
+    "split": {
+      "train": 54000,
+      "val": 6000,
+      "test": 10000
+    }
+  },
+  "environment": {
+    "framework": "PyTorch 2.14.1 (CPU)",
+    "python": "3.12",
+    "batch_size": 128,
+    "optimizer": "Adam, lr=1e-3, cosine annealing",
+    "seeds": [42, 43, 44]
+  },
+  "main_experiment": {
+    "epochs": 12,
+    "results": [
+      {
+        "config": "MLP",
+        "test_acc_percent": 89.29,
+        "test_acc_std": 0.1,
+        "macro_f1": 0.8927,
+        "params": 235146,
+        "sec_per_epoch": 1.59
+      },
+      {
+        "config": "CNN",
+        "test_acc_percent": 91.62,
+        "test_acc_std": 0.1,
+        "macro_f1": 0.916,
+        "params": 105962,
+        "sec_per_epoch": 8.89
+      },
+      {
+        "config": "CNN+Aug",
+        "test_acc_percent": 90.09,
+        "test_acc_std": 0.05,
+        "macro_f1": 0.9005,
+        "params": 105962,
+        "sec_per_epoch": 8.22
+      },
+      {
+        "config": "CNN+Aug-NoBN",
+        "test_acc_percent": 89.15,
+        "test_acc_std": 0.15,
+        "macro_f1": 0.8907,
+        "params": 105866,
+        "sec_per_epoch": 6.5
+      }
+    ]
+  },
+  "small_sample_experiment": {
+    "n_train": 1000,
+    "epochs": 30,
+    "results": [
+      {
+        "config": "MLP",
+        "test_acc_percent": 81.23,
+        "macro_f1": 0.8116
+      },
+      {
+        "config": "CNN",
+        "test_acc_percent": 83.71,
+        "macro_f1": 0.837
+      },
+      {
+        "config": "CNN+Aug",
+        "test_acc_percent": 80.91,
+        "macro_f1": 0.8053
+      }
+    ]
+  },
+  "extended_training": {
+    "epochs": 30,
+    "seeds": [42, 43],
+    "results": [
+      {
+        "config": "CNN",
+        "test_acc_percent": 92.08,
+        "macro_f1": 0.9207
+      },
+      {
+        "config": "CNN+Aug",
+        "test_acc_percent": 91.39,
+        "macro_f1": 0.9135
+      }
+    ]
+  },
+  "key_findings": {
+    "cnn_minus_mlp_percent": 2.33,
+    "augmentation_delta_percent": -1.53,
+    "no_bn_delta_percent": -0.94,
+    "param_ratio_mlp_over_cnn": 2.22
+  }
+}
