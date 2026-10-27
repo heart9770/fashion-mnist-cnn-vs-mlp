@@ -1,0 +1,16 @@
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 本地 Python 环境（体积大，不入库；用 pip install -r requirements.txt 重建）
+.venv/
+py312/
+pylibs/
+wheels/
+wheels312/
+
+# 数据集请用 download_data.py 获取，不入库（约 30 MB）
+data/fashion/*.gz
+
+# 本地验证产生的输出
+results_check/
